@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { ProductsPageActions } from '../state/products.actions';
 import {
   selectProducts,
+  selectProductsErrorMessage,
   selectProductsLoading,
   selectProductsShowProductCode,
   selectProductsTotal,
@@ -18,7 +19,7 @@ export class ProductsPageComponent {
   total$ = this.store.select(selectProductsTotal);
   loading$ = this.store.select(selectProductsLoading);
   showProductCode$ = this.store.select(selectProductsShowProductCode);
-  errorMessage = '';
+  errorMessage$ = this.store.select(selectProductsErrorMessage);
 
   constructor(private store: Store) {
     this.store.subscribe((store) => console.log(store));
