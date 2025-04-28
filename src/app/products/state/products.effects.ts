@@ -3,10 +3,13 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProductsService } from '../products.service';
 import { ProductsAPIActions, ProductsPageActions } from './products.actions';
 import { catchError, concatMap, exhaustMap, map, mergeMap, of } from 'rxjs';
-import { Product } from '../product.model';
 
 @Injectable()
 export class ProductEffects {
+  ngrxOnInitEffects() {
+    return ProductsPageActions.loadProducts();
+  }
+
   constructor(
     private actions$: Actions,
     private productsService: ProductsService
